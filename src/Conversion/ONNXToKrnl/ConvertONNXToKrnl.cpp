@@ -201,6 +201,7 @@ void populateONNXToKrnlConversionPattern(RewritePatternSet &patterns,
   populateLoweringONNXNonMaxSuppressionOpPattern(patterns, typeConverter, ctx);
   // Tensor
   populateLoweringONNXArgMaxOpPattern(patterns, typeConverter, ctx);
+  populateLoweringONNXArgMinOpPattern(patterns, typeConverter, ctx);
   populateLoweringONNXReshapeOpPattern(patterns, typeConverter, ctx);
   populateLoweringONNXPadOpPattern(patterns, typeConverter, ctx);
   populateLoweringONNXUnsqueezeOpPattern(patterns, typeConverter, ctx);

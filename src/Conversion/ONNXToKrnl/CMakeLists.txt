@@ -37,6 +37,7 @@ add_onnx_mlir_library(OMONNXToKrnl
   Sequence/SequenceLength.cpp
   ConvertONNXToKrnl.cpp
   Tensor/ArgMax.cpp
+  Tensor/ArgMin.cpp
   Tensor/Compress.cpp  
   Tensor/Concat.cpp
   Tensor/Constant.cpp
