@@ -649,7 +649,9 @@ def get_test_models():
 
         # QLinearMatmul
 
-        # QuantizeLinear
+        # ==OP== QuantizeLinear
+        "test_quantizelinear": {STATIC_SHAPE:{}, DYNAMIC_SHAPE:{-1:{-1}}, CONSTANT_INPUT:{-1}},
+        "test_quantizelinear_axis": {STATIC_SHAPE:{}, DYNAMIC_SHAPE:{-1:{-1}}, CONSTANT_INPUT:{-1}},
 
         # ==OP== Range
         "test_range_float_type_positive_delta_cpu": {STATIC_SHAPE:{}, DYNAMIC_SHAPE:{-1:{-1}}, CONSTANT_INPUT:{-1}},

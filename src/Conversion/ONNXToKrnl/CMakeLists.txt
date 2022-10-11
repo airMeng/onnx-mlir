@@ -25,6 +25,7 @@ add_onnx_mlir_library(OMONNXToKrnl
   NN/Normalization.cpp
   NN/Pooling.cpp
   ObjectDetection/NonMaxSuppression.cpp
+  Quantization/QuantizeLinear.cpp
   RNN/RNNBase.cpp
   RNN/GRU.cpp
   RNN/LSTM.cpp

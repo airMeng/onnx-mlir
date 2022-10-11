@@ -3251,17 +3251,21 @@ LogicalResult ONNXDynamicQuantizeLinearOp::inferShapes(
 LogicalResult ONNXQuantizeLinearOp::inferShapes(
     std::function<void(mlir::Region &)> doShapeInference) {
   auto inTy = x().getType().dyn_cast<RankedTensorType>();
+  Type inTzeroPointType = y_zero_point().getType().cast<ShapedType>().getElementType();;
   if (!inTy) {
     return success();
   }
 
   auto yTy = y().getType().cast<ShapedType>();
 
+  IntegerType yType;
+  if (inTzeroPointType.isUnsignedInteger()) {
+    yType = IntegerType::get(getContext(), 8, IntegerType::Unsigned);
+  } else {
+    yType = IntegerType::get(getContext(), 8);
+  }
   if (!yTy.hasStaticShape()) {
-    // TODO: Unfortunately, we can't tell if this should be signed or
-    // unsigned here...
-    IntegerType i8Type = IntegerType::get(getContext(), 8);
-    RankedTensorType outType = RankedTensorType::get(inTy.getShape(), i8Type);
+    RankedTensorType outType = RankedTensorType::get(inTy.getShape(), yType);
     y().setType(outType);
   }
 
